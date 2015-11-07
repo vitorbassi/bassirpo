@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @father.name %>
+</p>
+<p>
+  <strong>CPF:</strong>
+  <%= @father.cpf %>
+</p>
+<p>
+  <strong>E-mail:</strong>
+  <%= @father.email %>
+</p>
+<p>
+  <strong>Occupation:</strong>
+  <%= @father.occupation_description %>
+</p>
+<p>
+  <strong>Avatar:</strong>
+  <%= image_tag @father.avatar.url(:medium) %>
+</p>
+
+<p>
+  <hr>
+  <ul>
+  <% @father.children.each do |child| %>
+  	<li><%= "#{child.name} - #{pegar_sexo(child.sex)}" %><%= link_to 'Edit', edit_child_path(child) %> - <%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td></li>
+  <% end %>
+</ul>
+
+
+</p>
+
+<%= link_to 'Edit', edit_father_path(@father) %> |
+<%= link_to 'Back', fathers_path %>
